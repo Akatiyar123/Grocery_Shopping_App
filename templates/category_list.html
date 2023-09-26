@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Section - Categories List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/{{ user_id }}/#"><strong>{{ name }}</strong></a>
+            <div class="collapse navbar-collapse" id="navbarBasic">
+                <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><strong>Log Out</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/{{user_id}}/cart"><strong>Show Cart</strong></a>
+                    </li>
+                </ul>
+                <form class="d-flex" method="post">
+                    <input class="form-control me-2" type="search" placeholder="Search With Category" name="search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    {% if categories %}
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for category in categories %}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-header bg-success-subtle text-black text-center">
+                        <h4><strong>Category: </strong>{{ category.category_name }}</h4>
+                    </div>
+                    <div class="card-body bg-primary-subtle">
+                        <p class="card-text"><strong></strong><img src="{{ category.category_image_url }}" alt="Image"></p>
+
+                        <a href="/{{user_id}}/{{category.category_id}}/product_list" class="btn btn-primary">See the Products</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="container mt-4">
+        <div class="alert alert-warning">
+            <h3><strong>No Categories are added. </strong></h3>
+            <strong><p>Please Come back after some time.</p></strong>
+        </div>
+    </div>
+    {% endif %}
+</body>
+
+</html>

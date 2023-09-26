@@ -1,0 +1,8 @@
+﻿flask
+flask-login
+flask-sqlalchemy
+sqlalchemy
+flask_bcrypt
+os
+werkzeug.utils 
+sqlalchemy.sql

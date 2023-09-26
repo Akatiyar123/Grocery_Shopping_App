@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+    .login-container {
+      max-width: 300px;
+      margin: 100px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+    .login-container h2 {
+      text-align: center;
+    }
+    .login-container label,
+    .login-container input {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .login-container input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+    .login-container input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    .message-container {
+      max-width: 300px;
+      margin: 10px auto;
+      text-align: center;
+    }
+    .alert {
+      background-color: #d7acac;
+      color: #5e0000;
+      padding: 10px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form action="/admin_login" method="post">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+  <div class="message-container">
+    {% if msg %}
+      <div class="alert"><strong>{{ msg }}</strong></div>
+    {% endif %}
+  </div>
+</body>
+</html>
